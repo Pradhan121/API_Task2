@@ -21,11 +21,11 @@ exports.createLanguage = async(req,res)=>{
 
 exports.viewLanguage = async(req,res)=>{
     try{
-        const viewLanguage = await languageList.find()
+        const viewLanguage = await languageList.find().populate('loginUser')
 
         res.status(201).json({
             status: 'Success',
-            message: 'Language data created',
+            message: 'Language data fetched',
             data: viewLanguage
         })
     }
@@ -41,7 +41,7 @@ exports.updateLanguage = async(req,res)=>{
     try{
 
      const editId = req.params.id
-        const updateLng = await studentDetails.findByIdAndUpdate(editId, req.body, {new: true})
+        const updateLng = await languageList.findByIdAndUpdate(editId, req.body, {new: true})
 
         res.status(200).json({
             status: 'Success',
@@ -60,7 +60,7 @@ exports.updateLanguage = async(req,res)=>{
 exports.deleteLanguage = async(req,res)=>{
     try{
         const deleteId = req.params.id
-        const deleteLng = await studentDetails.findByIdAndDelete(deleteId)
+        const deleteLng = await languageList.findByIdAndDelete(deleteId)
 
         res.status(200).json({
             status: 'Success',
