@@ -21,11 +21,7 @@ exports.createQuestionData = async(req,res)=>{
     
     exports.viewQuestionData = async(req,res)=>{
         try{
-            const viewQuestion = await questionData.find().populate([
-                {path: 'loginUser'},
-                {path: 'languageList'},
-                {path: 'topicList'}
-            ])
+            const viewQuestion = await questionData.find().populate(['loginuser', 'languageList', 'topicList'])
     
             res.status(201).json({
                 status: 'Success',
