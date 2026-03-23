@@ -8,4 +8,4 @@ const languageSchema = new mongoose.Schema({
     name: String
 })
 
-module.exports = mongoose.model('langauge', languageSchema)
+module.exports = mongoose.model('language', languageSchema)
